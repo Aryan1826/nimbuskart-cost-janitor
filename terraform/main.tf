@@ -82,8 +82,9 @@ resource "aws_instance" "web" {
     Tier        = "web"
     Project     = var.project
     Environment = var.environment
-    Owner       = var.owner
-    ManagedBy   = "terraform"
+
+    ManagedBy = "terraform"
+    Protected = "true"
   }
 }
 resource "aws_s3_bucket" "logs" {
@@ -95,13 +96,6 @@ resource "aws_s3_bucket" "logs" {
     Environment = var.environment
     Owner       = var.owner
     ManagedBy   = "terraform"
-  }
-}
-resource "aws_s3_bucket_versioning" "versioning" {
-  bucket = aws_s3_bucket.logs.id
-
-  versioning_configuration {
-    status = "Enabled"
   }
 }
 resource "aws_ebs_volume" "orphan_volume" {
