@@ -140,6 +140,26 @@ python3 janitor.py --delete
 
 ---
 
+---
+
+# AI Usage Disclosure
+
+AI tools were used during development to accelerate debugging, infrastructure setup guidance, and boilerplate generation.
+
+## Tools Used
+- ChatGPT:
+  - Terraform debugging
+  - LocalStack troubleshooting
+  - Python boto3 integration guidance
+  - GitHub Actions workflow setup
+  - Documentation drafting
+
+## One Incorrect AI Suggestion
+One incorrect suggestion involved using S3 lifecycle and versioning APIs directly with LocalStack Community Edition. During implementation, these APIs caused compatibility and DNS resolution issues on macOS. This was identified through repeated Terraform apply failures and LocalStack limitations documentation, after which the unsupported sections were safely removed and documented.
+
+## One Section Implemented Manually
+The final Janitor scanning logic and reporting structure were manually adjusted and cleaned to ensure proper resource filtering, Protected=true handling, and readable report formatting. This part was refined manually to better understand the workflow and ensure the logic matched the assignment requirements.
+
 # Author
 
 Aryan Rangani
